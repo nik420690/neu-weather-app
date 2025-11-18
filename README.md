@@ -1,222 +1,167 @@
-# ⚡ Weather App - Neubrutalism Edition
+# Weather App
 
-A bold, modern weather application with a stunning **Neubrutalism design** inspired by Gumroad. Built with Flask, featuring dark/light mode and metric/imperial unit switching.
+A modern, feature-rich weather application built with Flask and vanilla JavaScript, featuring a bold Neubrutalism design aesthetic.
 
-![Weather App](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Flask](https://img.shields.io/badge/Flask-3.0.0-green.svg)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-## ✨ Features
+## 🌟 Live Demo
 
-✅ **Neubrutalism Design** - Bold colors, thick borders, heavy shadows
-✅ **Dark/Light Mode** - Toggle between themes
-✅ **Metric/Imperial Units** - Switch between °C/°F and m/s/mph
-✅ **Real-time Weather Data** - Powered by OpenWeatherMap API
-✅ **Responsive Design** - Works on desktop, tablet, and mobile
-✅ **Fast & Lightweight** - Pure HTML, CSS, and JavaScript
+[View Live App](https://neu-weather-app.onrender.com)
 
-## 🎨 Design Features
+## 📋 Overview
 
-- **Bold Typography** - UPPERCASE text with heavy font weights
-- **Vibrant Colors** - Pink, yellow, purple, cyan, orange
-- **Thick Borders** - 4-5px black borders on all elements
-- **Offset Shadows** - 3D layered effect with shadow displacement
-- **No Rounded Corners** - Sharp, angular design
-- **High Contrast** - Maximum visual impact
+A full-stack weather application that provides real-time weather data, forecasts, and location-based services. The app features a unique Neubrutalism design with bold colors, thick borders, and heavy shadows for maximum visual impact.
 
-## 🚀 Quick Start (Local)
+## ✨ Key Features
 
-### Prerequisites
+### Core Functionality
+- **Real-time Weather Data** - Current conditions for any city worldwide
+- **Geolocation Support** - Automatic weather detection using browser location API
+- **24-Hour Forecast** - Hourly weather predictions with 3-hour intervals
+- **5-Day Forecast** - Extended weather outlook with daily high/low temperatures
+- **Search History** - Persistent local storage of recent searches (last 10 cities)
+- **City Autocomplete** - Smart suggestions from 130+ major cities worldwide
 
-- Python 3.8 or higher
-- pip (Python package manager)
+### Weather Data
+- Temperature (°C/°F with toggle)
+- "Feels Like" temperature
+- Weather conditions with icons
+- Humidity levels
+- Wind speed (m/s or mph)
+- Atmospheric pressure
+- Sunrise/Sunset times
+- UV Index with color-coded safety levels
+- Precipitation probability
 
-### Installation
+### User Experience
+- **Dark/Light Mode** - Theme toggle with persistent preference
+- **Metric/Imperial Units** - Switchable temperature and speed units
+- **Refresh Button** - One-click weather data update
+- **Last Updated Timestamp** - Auto-updating relative time display
+- **Responsive Design** - Optimized for desktop, tablet, and mobile
+- **Offline-First** - Cached search history and autocomplete data
 
-1. **Clone or download this repository**
+## 🛠️ Tech Stack
 
-2. **Install dependencies:**
-```bash
-python -m pip install -r requirements.txt
-```
+### Backend
+- **Python 3.8+**
+- **Flask 3.0.0** - Lightweight WSGI web framework
+- **Requests** - HTTP library for API calls
+- **Gunicorn** - Production WSGI server
 
-3. **Get your free API key:**
-   - Visit: https://openweathermap.org/api
-   - Sign up for a free account
-   - Copy your API key
-   - Add it as environment variable or keep the default in `app.py`
+### Frontend
+- **HTML5** - Semantic markup
+- **CSS3** - Custom styling with CSS variables
+- **Vanilla JavaScript** - No frameworks, pure ES6+
+- **Font Awesome 6.4.0** - Icon library
 
-4. **Run the app:**
-```bash
-python app.py
-```
+### APIs
+- **OpenWeatherMap API** - Weather data and forecasts
+  - Current Weather API
+  - 5-Day Forecast API
+  - UV Index API
 
-5. **Open your browser:**
-   - Go to: http://localhost:5000
-   - Search for any city worldwide!
+### Design
+- **Neubrutalism** - Bold, brutalist web design principles
+- **Responsive** - Mobile-first approach
+- **Accessibility** - WCAG compliant color contrasts
 
-## 🌐 Deploy Online (Make it Public!)
-
-Want others to use your app? Deploy it for **FREE**!
-
-### Recommended: Deploy to Render (Easiest)
-
-1. **Push to GitHub:**
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/YOUR_USERNAME/weather-app.git
-git push -u origin main
-```
-
-2. **Deploy to Render:**
-   - Go to https://render.com and sign up (free)
-   - Click "New +" → "Web Service"
-   - Connect your GitHub repository
-   - Configure:
-     - **Build Command:** `pip install -r requirements.txt`
-     - **Start Command:** `gunicorn app:app`
-   - Add environment variable: `OPENWEATHER_API_KEY` = `your_key`
-   - Click "Create Web Service"
-
-3. **Done!** Your app is live at: `https://your-app-name.onrender.com`
-
-📖 **Full deployment guide:** See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for more hosting options!
-
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```
-weather_app/
-├── app.py                 # Flask backend server
+weather-app/
+├── app.py                 # Flask application and API routes
 ├── requirements.txt       # Python dependencies
 ├── Procfile              # Deployment configuration
-├── .gitignore            # Git ignore rules
+├── fix_security.py       # Security update utility
 ├── static/
 │   ├── style.css         # Neubrutalism styling
-│   └── script.js         # Frontend JavaScript
+│   ├── script.js         # Frontend JavaScript
+│   └── cities.json       # City autocomplete database
 ├── templates/
-│   └── index.html        # Main HTML page
-├── README.md             # This file
-└── DEPLOYMENT_GUIDE.md   # Detailed deployment instructions
+│   └── index.html        # Main application template
+└── README.md             # Project documentation
 ```
-
-## 🎯 How to Use
-
-1. **Enter a city name** in the search box
-2. **Click "GET WEATHER"** or press Enter
-3. **Toggle Dark Mode** by clicking the 🌙 DARK button
-4. **Switch Units** by clicking the °F IMPERIAL button
-5. **View weather details** including:
-   - Temperature
-   - Feels Like
-   - Humidity
-   - Wind Speed
-   - Atmospheric Pressure
-   - Weather Description
-
-## 🔧 Configuration
-
-### API Key Setup
-
-For security, use environment variables:
-
-**Local Development:**
-```bash
-# Windows (PowerShell)
-$env:OPENWEATHER_API_KEY="your_key_here"
-
-# Mac/Linux
-export OPENWEATHER_API_KEY="your_key_here"
-```
-
-**Production (Hosting Platform):**
-Add `OPENWEATHER_API_KEY` in your platform's environment variables section.
-
-## 🎨 Color Palette
-
-| Color | Hex | Usage |
-|-------|-----|-------|
-| Pink | `#ff6b9d` | Primary button |
-| Yellow | `#ffd93d` | Theme toggle |
-| Purple | `#b794f6` | Unit toggle |
-| Cyan | `#4ecdc4` | Accents |
-| Orange | `#ff8c42` | Errors |
-| Green | `#6bcf7f` | Success |
-
-## 🌍 Browser Support
-
-✅ Chrome/Edge (Recommended)
-✅ Firefox
-✅ Safari
-✅ Opera
-✅ Mobile browsers (iOS/Android)
-
-## 🚀 Technologies Used
-
-- **Backend:** Flask 3.0.0 (Python)
-- **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
-- **API:** OpenWeatherMap API
-- **Deployment:** Gunicorn WSGI server
-- **Design:** Neubrutalism / Brutalist Web Design
 
 ## 📊 API Usage
 
-Free tier limits:
-- **60 calls per minute**
-- **1,000,000 calls per month**
-- More than enough for personal use!
+The app makes efficient use of the OpenWeatherMap API:
+- **2-3 API calls per search** (current weather + forecast + UV index)
+- **Free tier limits**: 60 calls/min, 1,000,000 calls/month
+- **Caching**: Browser-side caching of icons and static data
 
-## 🔒 Security
+## 🎨 Design Highlights
 
-- ✅ API keys stored in environment variables
-- ✅ No hardcoded credentials in code
-- ✅ HTTPS enabled on all deployment platforms
-- ✅ Input validation and error handling
+### Neubrutalism Principles
+- **Bold Typography** - Heavy font weights and uppercase text
+- **Vibrant Colors** - Pink, yellow, purple, cyan, orange palette
+- **Thick Borders** - 4-5px solid borders on all elements
+- **Offset Shadows** - 3D effect with shadow displacement
+- **Sharp Edges** - No rounded corners, angular design
+- **High Contrast** - Maximum visual impact and readability
 
-## 🐛 Troubleshooting
+### Color Palette
+| Color | Hex | Usage |
+|-------|-----|-------|
+| Pink | `#ff6b9d` | Primary actions, temperature |
+| Yellow | `#ffd93d` | Theme toggle, highlights |
+| Purple | `#b794f6` | Unit toggle, accents |
+| Cyan | `#4ecdc4` | Location, humidity |
+| Orange | `#ff8c42` | Errors, time indicators |
+| Green | `#6bcf7f` | Success states |
 
-### API Key Not Working
-- Wait 10-30 minutes for new keys to activate
-- Verify email with OpenWeatherMap
-- Check key status at: https://home.openweathermap.org/api_keys
+## 🧪 Testing
 
-### App Won't Start Locally
-```bash
-# Reinstall dependencies
-python -m pip install --upgrade -r requirements.txt
+### Manual Testing Checklist
+- [ ] Search functionality with valid/invalid cities
+- [ ] Geolocation permission handling
+- [ ] Unit conversion (°C ↔ °F)
+- [ ] Theme toggle persistence
+- [ ] Responsive layout on mobile/tablet/desktop
+- [ ] Dark mode styling
+- [ ] API error handling
+- [ ] Search history persistence
+- [ ] Autocomplete suggestions
+- [ ] Hourly forecast scrolling
+- [ ] All icons loading correctly
 
-# Check Python version
-python --version  # Should be 3.8+
-```
+## 🔧 Technical Highlights
 
-### Deployment Issues
-- See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)
-- Check platform logs for errors
-- Verify all environment variables are set
+### Frontend
+- **Modular JavaScript** - Clean separation of concerns
+- **ES6+ Features** - Arrow functions, template literals, async/await
+- **LocalStorage API** - Persistent user preferences and search history
+- **Geolocation API** - Browser-based location detection
+- **Fetch API** - Modern HTTP requests
+- **Responsive Design** - CSS Grid and Flexbox
 
-## 📝 License
+### Backend
+- **RESTful API Design** - Clean endpoint structure
+- **Error Handling** - Comprehensive try-catch blocks
+- **Input Validation** - Sanitized user inputs
+- **Rate Limiting Ready** - Prepared for production constraints
+- **CORS Enabled** - Cross-origin resource sharing
+- **Environment Variables** - Secure configuration management
 
-This project is open source and available under the MIT License.
+## 🐛 Known Issues & Future Improvements
 
-## 🤝 Contributing
+### Potential Enhancements
+- Add weather maps with radar imagery
+- Implement weather alerts and notifications
+- Add weather comparison between cities
+- Include air quality index (AQI) data
+- Add multi-language support
+- Implement progressive web app (PWA) features
+- Add weather charts and graphs
 
-Feel free to fork, modify, and improve this project!
+## 🙏 Acknowledgments
 
-## 🎉 Credits
-
-- **Design Inspiration:** Gumroad, Neubrutalism movement
-- **Weather Data:** OpenWeatherMap API
-- **Icons:** Emoji (universal support)
-
-## 📞 Support
-
-- **OpenWeatherMap API Docs:** https://openweathermap.org/api
-- **Flask Documentation:** https://flask.palletsprojects.com/
-- **Deployment Help:** See DEPLOYMENT_GUIDE.md
+- [OpenWeatherMap](https://openweathermap.org/) - Weather data API
+- [Font Awesome](https://fontawesome.com/) - Icon library
+- [Flask Documentation](https://flask.palletsprojects.com/) - Framework reference
+- Neubrutalism design inspiration from [Brutalist Websites](https://brutalistwebsites.com/)
 
 ---
 
-**Made with ⚡ and bold design choices**
-
-Enjoy your weather app! 🌤️
+**Built with ⚡ and modern web technologies**
