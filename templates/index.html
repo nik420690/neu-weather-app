@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>⚡ Weather App</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title">⚡ WEATHER</h1>
+
+            <!-- Control Buttons -->
+            <div class="control-buttons">
+                <button id="themeBtn" class="btn btn-theme">🌙 DARK</button>
+                <button id="unitBtn" class="btn btn-unit">°F IMPERIAL</button>
+            </div>
+
+            <!-- Search Section -->
+            <div class="search-section">
+                <label for="cityInput">📍 CITY NAME:</label>
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="London, Tokyo, Paris..."
+                    autocomplete="off"
+                />
+                <button id="searchBtn" class="btn btn-search">
+                    🔍 GET WEATHER
+                </button>
+            </div>
+
+            <!-- Weather Display Card -->
+            <div id="weatherCard" class="weather-card">
+                <div id="loadingSpinner" class="spinner hidden">
+                    <div class="spinner-circle"></div>
+                </div>
+
+                <div id="weatherContent" class="weather-content">
+                    <h2 id="cityName" class="city-name"></h2>
+                    <div id="temperature" class="temperature"></div>
+                    <p id="description" class="description"></p>
+                    <div class="weather-details">
+                        <p id="feelsLike">🌡️ <span></span></p>
+                        <p id="humidity">💧 <span></span></p>
+                        <p id="windSpeed">💨 <span></span></p>
+                        <p id="pressure">🔽 <span></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-message hidden"></div>
+        </div>
+
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </body>
+</html>
