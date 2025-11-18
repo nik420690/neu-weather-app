@@ -8,6 +8,11 @@
             rel="stylesheet"
             href="{{ url_for('static', filename='style.css') }}"
         />
+        <!-- Font Awesome Icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
     </head>
     <body>
         <div class="container">
@@ -17,20 +22,41 @@
             <div class="control-buttons">
                 <button id="themeBtn" class="btn btn-theme">🌙 DARK</button>
                 <button id="unitBtn" class="btn btn-unit">°F IMPERIAL</button>
+                <button id="locationBtn" class="btn btn-location">
+                    📍 USE MY LOCATION
+                </button>
+                <button id="refreshBtn" class="btn btn-refresh hidden">
+                    🔄 REFRESH
+                </button>
             </div>
 
             <!-- Search Section -->
             <div class="search-section">
                 <label for="cityInput">📍 CITY NAME:</label>
-                <input
-                    type="text"
-                    id="cityInput"
-                    placeholder="London, Tokyo, Paris..."
-                    autocomplete="off"
-                />
+                <div class="search-input-wrapper">
+                    <input
+                        type="text"
+                        id="cityInput"
+                        placeholder="London, Tokyo, Paris..."
+                        autocomplete="off"
+                    />
+                    <!-- Autocomplete Suggestions -->
+                    <div id="suggestions" class="suggestions hidden"></div>
+                </div>
                 <button id="searchBtn" class="btn btn-search">
                     🔍 GET WEATHER
                 </button>
+            </div>
+
+            <!-- Search History -->
+            <div id="searchHistory" class="search-history hidden">
+                <div class="history-header">
+                    <span class="history-title">🕐 RECENT SEARCHES:</span>
+                    <button id="clearHistoryBtn" class="btn-clear-history">
+                        ✕ CLEAR
+                    </button>
+                </div>
+                <div id="historyChips" class="history-chips"></div>
             </div>
 
             <!-- Weather Display Card -->
@@ -41,19 +67,76 @@
 
                 <div id="weatherContent" class="weather-content">
                     <h2 id="cityName" class="city-name"></h2>
+                    <div class="weather-icon-container">
+                        <img
+                            id="weatherIcon"
+                            class="weather-icon"
+                            src=""
+                            alt=""
+                        />
+                    </div>
                     <div id="temperature" class="temperature"></div>
                     <p id="description" class="description"></p>
+                    <div id="lastUpdated" class="last-updated hidden">
+                        LAST UPDATED: <span id="updateTime"></span>
+                    </div>
+
+                    <!-- Sunrise/Sunset & UV Index -->
+                    <div id="sunUvInfo" class="sun-uv-info hidden">
+                        <div class="sun-uv-card">
+                            <i class="fa-solid fa-sunrise sun-uv-icon"></i>
+                            <div class="sun-uv-label">SUNRISE</div>
+                            <div id="sunriseTime" class="sun-uv-value"></div>
+                        </div>
+                        <div class="sun-uv-card">
+                            <i class="fa-solid fa-sunset sun-uv-icon"></i>
+                            <div class="sun-uv-label">SUNSET</div>
+                            <div id="sunsetTime" class="sun-uv-value"></div>
+                        </div>
+                        <div class="sun-uv-card">
+                            <i class="fa-solid fa-sun sun-uv-icon"></i>
+                            <div class="sun-uv-label">UV INDEX</div>
+                            <div id="uvIndex" class="sun-uv-value"></div>
+                        </div>
+                    </div>
+
                     <div class="weather-details">
-                        <p id="feelsLike">🌡️ <span></span></p>
-                        <p id="humidity">💧 <span></span></p>
-                        <p id="windSpeed">💨 <span></span></p>
-                        <p id="pressure">🔽 <span></span></p>
+                        <p id="feelsLike">
+                            <i
+                                class="fa-solid fa-temperature-half detail-icon"
+                            ></i>
+                            <span></span>
+                        </p>
+                        <p id="humidity">
+                            <i class="fa-solid fa-droplet detail-icon"></i>
+                            <span></span>
+                        </p>
+                        <p id="windSpeed">
+                            <i class="fa-solid fa-wind detail-icon"></i>
+                            <span></span>
+                        </p>
+                        <p id="pressure">
+                            <i class="fa-solid fa-gauge detail-icon"></i>
+                            <span></span>
+                        </p>
                     </div>
                 </div>
             </div>
 
             <!-- Error Message -->
             <div id="errorMessage" class="error-message hidden"></div>
+
+            <!-- Hourly Forecast Section -->
+            <div id="hourlySection" class="hourly-section hidden">
+                <h2 class="hourly-title">🕐 HOURLY FORECAST (24H)</h2>
+                <div id="hourlyCards" class="hourly-cards"></div>
+            </div>
+
+            <!-- 5-Day Forecast Section -->
+            <div id="forecastSection" class="forecast-section hidden">
+                <h2 class="forecast-title">📅 5-DAY FORECAST</h2>
+                <div id="forecastCards" class="forecast-cards"></div>
+            </div>
         </div>
 
         <script src="{{ url_for('static', filename='script.js') }}"></script>
